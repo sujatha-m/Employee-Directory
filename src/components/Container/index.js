@@ -4,11 +4,7 @@ import SearchBox from '../SearchBox/index'
 import TableData from '../TableData/index'
 import Header from '../Header/index';
 import Footer from '../Footer/index';
-import CheckBox from '../CheckBox/index'
 import './style.css'
-
-//options to sort employee fields
-const OPTIONS = ["Age", "FirstName", "Country"];
 
 class Container extends Component {
     //setting the component's initial state
@@ -17,14 +13,7 @@ class Container extends Component {
         search: '',
         employess:[],
         filteredEmployees:[],
-        order:'',
-        checkboxes: OPTIONS.reduce(
-            (options, option) => ({
-              ...options,
-              [option]: false
-            }),
-            {}
-        )
+        order:'asc'
     }
 
     // this is the initialization, what do you want the page to display when page it's first loaded
@@ -79,21 +68,21 @@ class Container extends Component {
 
     sortByFirstName = () => {
         const filtereds = this.state.filteredEmployees
-        if(this.state.order === "asc"){
-            const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? -1 : 1)
-            //console.log(sorteds)
-
-            this.setState({
-                filteredEmployees: sorteds
-            })
-        } else {
+        //if(this.state.order === "asc"){
             const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
             //console.log(sorteds)
 
             this.setState({
                 filteredEmployees: sorteds
             })
-        }
+         //} else {
+        //     const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
+        //     //console.log(sorteds)
+
+        //     this.setState({
+        //         filteredEmployees: sorteds
+        //     })
+        // }
     }
 
     sortByAge = () => {
@@ -105,52 +94,18 @@ class Container extends Component {
         })  
     }
 
-    sortByCountry = () => {
+    invokeDropDownCBs = (val) => {
+        if(val === 'FirstName') {
+            this.sortByFirstName()
+        } else if(val === 'Age') {
+                this.sortByAge()
+        } else if(val === 'Male') {
 
+        } else if(val === 'Female') {
+
+        }
     }
 
-    handleCheckboxChange = changeEvent => {
-        //changeEvent.persist()
-        //console.log(changeEvent.target.checked)
-        const name = changeEvent.target.name
-        const checked = changeEvent.target.checked
-    
-        this.setState(prevState => ({
-          checkboxes: {
-            ...prevState.checkboxes,
-            [name]: !prevState.checkboxes[name]
-          }
-        }));
-
-        if(name === 'FirstName') {
-            if(checked) {
-                this.setState({
-                    order: "asc"
-                })
-            } else {
-                this.setState({
-                    order: "desc"
-                })
-            }
-            this.sortByFirstName()
-        } else if(name === 'Age') {
-            if(checked) {
-                this.sortByAge()
-            }
-        }
-      };
-
-      createCheckbox = option => (
-        <CheckBox
-          label={option}
-          isSelected={this.state.checkboxes[option]}
-          onCheckboxChange={this.handleCheckboxChange}
-          key={option}
-        />
-      );
-          
-      createCheckboxes = () => OPTIONS.map(this.createCheckbox);
-    
     render() {
 
         return (
@@ -159,8 +114,8 @@ class Container extends Component {
                 <SearchBox
                     employee={this.state.employees}
                     handleSearch={this.handleSearch}
+                    invokeDropDownCBs={this.invokeDropDownCBs}
                     handleInputChange={this.handleInputChange} />
-                {this.createCheckboxes()}
                 <TableData results={this.state.filteredEmployees} 
                     />
                 <Footer/>
