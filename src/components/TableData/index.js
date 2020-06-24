@@ -17,21 +17,15 @@ function TableData(props){
 
             <tbody className= "">
                 {props.results.map(result => (
-                    <tr className="table" key={result.login.uuid}>
-                     
-
+                    <tr className="table" key={result.login.uuid}>                 
                         <td> <img className="
-                        "src={result.picture.medium} alt="" /></td>
-                        
+                        "src={result.picture.medium} alt="" /></td>                 
                         <td>{result.name.first + " " + result.name.last}  </td>
-
                         <td>{result.dob.age}</td>
-
                         <td>{result.cell}</td>
                         <td className="email"><a href={result.email}>{result.email}</a></td>
                         <td>{result.gender}</td>
                         <td>{result.nat}</td>
-
                     </tr>
                 ))}
             </tbody>

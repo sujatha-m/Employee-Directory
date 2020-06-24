@@ -4,7 +4,11 @@ import SearchBox from '../SearchBox/index'
 import TableData from '../TableData/index'
 import Header from '../Header/index';
 import Footer from '../Footer/index';
+import CheckBox from '../CheckBox/index'
 import './style.css'
+
+//options to sort employee fields
+const OPTIONS = ["Age", "FirstName", "Country"];
 
 class Container extends Component {
     //setting the component's initial state
@@ -13,7 +17,14 @@ class Container extends Component {
         search: '',
         employess:[],
         filteredEmployees:[],
-        order:''
+        order:'',
+        checkboxes: OPTIONS.reduce(
+            (options, option) => ({
+              ...options,
+              [option]: false
+            }),
+            {}
+        )
     }
 
     // this is the initialization, what do you want the page to display when page it's first loaded
@@ -25,55 +36,8 @@ class Container extends Component {
   
     }
 
-    sortByFirstName = () => {
-        const filtereds = this.state.filteredEmployees
-        if(this.state.order === "asc"){
-            const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
-            console.log(sorteds)
-
-            this.setState({
-                filteredEmployees: sorteds,
-                order: "desc"
-            })
-        } else {
-
-            const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? -1 : 1)
-            console.log(sorteds)
-
-            this.setState({
-                filteredEmployees: sorteds,
-                order: "asc"
-            })
-
-        }
-
-    }
-
-    sortByLastName = () =>{
-        
-    }
-    
-    //when input is changing it will dynamically show the associates names that match in the screen
-    handleInputChange = event => {
-
-        const employees = this.state.employees;
-        const UserInput = event.target.value;
-        const filteredEmployees = employees.filter(employee => employee.name.first.toLowerCase().indexOf(UserInput.toLowerCase()) > -1
-        )
-        this.setState({
-            //change the state of  filteredEmployes now it holds all the employes that matches users
-            // search and will be passed down in this state
-
-            filteredEmployees,
-
-        });
-
-
-    };
-
-
-    //API call triggered when page it's refreshed and  when application it's loaded 
-    employeeSearch = () => {
+     //API call triggered when page it's refreshed and  when application it's loaded 
+     employeeSearch = () => {
         API.getUsers()
             .then(res => this.setState({
 
@@ -101,6 +65,92 @@ class Container extends Component {
         });
     }
 
+    //when input is changing it will dynamically show the associates names that match in the screen
+    handleInputChange = event => {
+        const employees = this.state.employees;
+        const UserInput = event.target.value;
+        const filteredEmployees = employees.filter(employee => employee.name.first.toLowerCase().indexOf(UserInput.toLowerCase()) !== -1 )
+        this.setState({
+            //change the state of  filteredEmployes now it holds all the employes that matches users
+            // search and will be passed down in this state
+            filteredEmployees,
+        });
+    };
+
+    sortByFirstName = () => {
+        const filtereds = this.state.filteredEmployees
+        if(this.state.order === "asc"){
+            const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? -1 : 1)
+            //console.log(sorteds)
+
+            this.setState({
+                filteredEmployees: sorteds
+            })
+        } else {
+            const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
+            //console.log(sorteds)
+
+            this.setState({
+                filteredEmployees: sorteds
+            })
+        }
+    }
+
+    sortByAge = () => {
+        const filtereds = this.state.filteredEmployees
+        const sorteds = filtereds.sort((a, b) => (a.dob.age < b.dob.age) ? -1 : 1)
+        //console.log(sorteds)
+        this.setState({
+            filteredEmployees: sorteds
+        })  
+    }
+
+    sortByCountry = () => {
+
+    }
+
+    handleCheckboxChange = changeEvent => {
+        //changeEvent.persist()
+        //console.log(changeEvent.target.checked)
+        const name = changeEvent.target.name
+        const checked = changeEvent.target.checked
+    
+        this.setState(prevState => ({
+          checkboxes: {
+            ...prevState.checkboxes,
+            [name]: !prevState.checkboxes[name]
+          }
+        }));
+
+        if(name === 'FirstName') {
+            if(checked) {
+                this.setState({
+                    order: "asc"
+                })
+            } else {
+                this.setState({
+                    order: "desc"
+                })
+            }
+            this.sortByFirstName()
+        } else if(name === 'Age') {
+            if(checked) {
+                this.sortByAge()
+            }
+        }
+      };
+
+      createCheckbox = option => (
+        <CheckBox
+          label={option}
+          isSelected={this.state.checkboxes[option]}
+          onCheckboxChange={this.handleCheckboxChange}
+          key={option}
+        />
+      );
+          
+      createCheckboxes = () => OPTIONS.map(this.createCheckbox);
+    
     render() {
 
         return (
@@ -110,15 +160,13 @@ class Container extends Component {
                     employee={this.state.employees}
                     handleSearch={this.handleSearch}
                     handleInputChange={this.handleInputChange} />
-                <TableData results={this.state.filteredEmployees}
-                    sortByFirstName={this.sortByFirstName} />
+                {this.createCheckboxes()}
+                <TableData results={this.state.filteredEmployees} 
+                    />
                 <Footer/>
             </div >
-
-
         )
     }
-
 }
 
 export default Container
