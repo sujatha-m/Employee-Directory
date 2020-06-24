@@ -4,7 +4,7 @@ import "./style.css";
 function Header() {
     return (
         <header className="header" >
-        <h1 className="right-align headerText">Employee Directory</h1>
+        <h1 className="headerText">Employee Directory</h1>
       </header>
 
     )

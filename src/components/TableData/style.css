@@ -1,0 +1,29 @@
+body {
+    background-color:whitesmoke
+}
+ table{
+     margin-top: 15px;
+ }
+
+th {
+    font-size: 17px;
+    letter-spacing: 1px;
+    font-family: 'Inria Serif', serif;
+    color: silver;
+    cursor: pointer;  
+}
+img {
+    border-radius: 50%;  
+    box-shadow: black 1px 1px 8px;  
+ }
+ .tableEmployee{
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 0px;
+    font-family: 'Catamaran', sans-serif;  
+}
+
+.name-cell{
+    text-transform: capitalize;
+    background-color:#2cbda0;
+}

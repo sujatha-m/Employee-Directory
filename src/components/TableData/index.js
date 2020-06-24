@@ -3,9 +3,10 @@ import './style.css'
 
 function TableData(props){
     return (
-        <table className = 'tableEmployee'>
+        <table className = 'tableEmployee col-12'>
             <thead>
                 <tr>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Age</th>
                  <th>Phone</th>
@@ -20,12 +21,12 @@ function TableData(props){
                     <tr className="table" key={result.login.uuid}>                 
                         <td> <img className="
                         "src={result.picture.medium} alt="" /></td>                 
-                        <td>{result.name.first + " " + result.name.last}  </td>
-                        <td>{result.dob.age}</td>
-                        <td>{result.cell}</td>
-                        <td className="email"><a href={result.email}>{result.email}</a></td>
-                        <td>{result.gender}</td>
-                        <td>{result.nat}</td>
+                        <td data-th="Name" className="name-cell align-middle">{result.name.first + " " + result.name.last}  </td>
+                        <td className="align-middle">{result.dob.age}</td>
+                        <td className="align-middle">{result.cell}</td>
+                        <td className="align-middle"><a href={result.email}>{result.email}</a></td>
+                        <td className="align-middle">{result.gender}</td>
+                        <td className="align-middle">{result.nat}</td>
                     </tr>
                 ))}
             </tbody>
