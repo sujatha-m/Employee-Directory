@@ -1,6 +1,9 @@
 import React from 'react'
 import './style.css'
 
+/* Table component which holds the employee fields to be displayed from 
+ * the directory
+*/
 function TableData(props){
     return (
         <table className = 'tableEmployee col-12'>
