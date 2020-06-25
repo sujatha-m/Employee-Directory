@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 
+/* simple component to handle dropdown menu which sorts employees by first name 
+ * and age
+ */
 const SortDropDown = ({handleSelect}) => (
   <DropdownButton
   alignRight
