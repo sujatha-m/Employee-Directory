@@ -29,10 +29,12 @@ color: gray !important;
 } */ 
 
   
-/* .searchbox button{
-    border: 1px solid purple;
+ .btn{
+    color:white;
+
+    /* border: 1px solid purple; */
 }
-.searchbox button:hover {
+/* .searchbox button:hover {
     background-color: purple;
     color:white;
 } */
@@ -50,7 +52,9 @@ color: gray !important;
   } */
 
   .input-group{
-      width: 40%;
+      width: 95%;
       margin: 20px;
+      align-items: center;
+      margin-left: 50;
   }
   

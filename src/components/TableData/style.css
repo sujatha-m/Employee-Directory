@@ -1,5 +1,6 @@
 body {
-    background-color:whitesmoke
+    background-color:snow;
+    background-image:"https://media.istockphoto.com/photos/white-marble-texture-pattern-background-picture-id968831322"
 }
  table{
      margin-top: 15px;
@@ -9,7 +10,7 @@ th {
     font-size: 17px;
     letter-spacing: 1px;
     font-family: 'Inria Serif', serif;
-    color: silver;
+    color: rgb(104, 16, 16);
     cursor: pointer;  
 }
 img {
@@ -20,10 +21,12 @@ img {
     margin-left: 40px;
     margin-right: 40px;
     padding: 0px;
-    font-family: 'Catamaran', sans-serif;  
+    font-family: 'Catamaran', sans-serif; 
+    text-align: center; 
+    font-size: larger;
 }
 
 .name-cell{
     text-transform: capitalize;
-    background-color:#2cbda0;
+    background-color:#d44a8a79;
 }

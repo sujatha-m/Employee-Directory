@@ -40,11 +40,11 @@ function SearchBox (props) {
           type='submit'
           value=''
           // className=' btn z-depth-2 waves-effect  searchBttn'
-          className='btn my-2 my-sm-0'
+          className='btn my-2 my-sm-0 bg-primary'
           onClick={props.handleSearch}
         >
           Search
-        </button>
+        </button>&nbsp;&nbsp;&nbsp;
       </div>
       <SortDropDown
       handleSelect = {handleSelect}

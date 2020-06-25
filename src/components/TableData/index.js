@@ -22,8 +22,7 @@ function TableData(props){
             <tbody className= "">
                 {props.results.map(result => (
                     <tr className="table" key={result.login.uuid}>                 
-                        <td> <img className="
-                        "src={result.picture.medium} alt="" /></td>                 
+                        <td> <img className="align-middle"src={result.picture.medium} alt="" /></td>                 
                         <td data-th="Name" className="name-cell align-middle">{result.name.first + " " + result.name.last}  </td>
                         <td className="align-middle">{result.dob.age}</td>
                         <td className="align-middle">{result.cell}</td>
