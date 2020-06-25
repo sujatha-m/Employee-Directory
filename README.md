@@ -58,9 +58,11 @@ This app utilizes an API to populate random users and then create a directory. O
 
 ## Visuals
 
-![](Demo/budgetTrackerGif.gif)
-![](Demo/1.image.png)
-![](Demo/2.image.png)
+![](Demo/employee-directory.gif)
+
+![](Demo/1.Screenshot.png)
+
+![](Demo/2.Screenshot.png)
 
 ## Built with
 * React.js
