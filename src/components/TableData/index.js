@@ -6,6 +6,7 @@ import './style.css'
 */
 function TableData(props){
     return (
+        <div className = "container-fluid">
         <table className = 'tableEmployee col-12'>
             <thead>
                 <tr>
@@ -33,6 +34,7 @@ function TableData(props){
                 ))}
             </tbody>
         </table>
+        </div>
     )
 }
 

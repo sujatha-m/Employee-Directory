@@ -1,68 +1,99 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Employee-Directory
+An Employee Directory application built using React components.
+The application manages component states and responds to user events.
 
-In the project directory, you can run:
+### Deployed Heroku URL
+Click here to see live app: 
 
-### `npm start`
+## Table of Contents
+   * [User Story](#user-story)
+   * [Acceptance Criteria](#acceptance-criteria)
+   * [Description](#description)
+   * [Usage](#usage)
+   * [Built with](#built-with)
+   * [Installation](#installation)
+   * [Badges](#badges)
+   * [Contributing](#contributing)
+   * [License](#license)
+   * [Tests](#tests)
+   * [Visuals](#visuals)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## User Story
+```
+* As a user, 
+* I want to be able to view my entire employee directory at once so that I have quick access to their information.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+## Acceptance Criteria
+```
+Given a table of random users, when the user loads the page, a table of employees should render. 
 
-### `npm test`
+The user should be able to:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  * Sort the table by at least one category
 
-### `npm run build`
+  * Filter the users by at least one property
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Description
+Primary goal of app is to use React for the first time. The app takes in a set of random employees from the API Random User Generator (randomuser.me). It stores the random employees in context. The employees are mapped over and displayed in a table format. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### features
+The WebApp complies to following features. These are as follows -
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* The user is able to search by the users first name with the search input.
 
-### `npm run eject`
+* The user is able to sort the employees by first name or age by clicking on either of these options in the sort by dropdown menu.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* The user is also able to filter the employees by gender by clicking on either male or female options in the filter by dropdown menu.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project was bootstrapped with Create React App.
+This app utilizes an API to populate random users and then create a directory. Other users on the app can search for employees by "name" and also organize each field (Name, Email, Age, Phone, Gender and Country). The names are always sorted in ascending order
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Badges
+[![gf](https://img.shields.io/github/followers/sujatha-m?style=social)](https://img.shields.io/github/followers/sujatha-m?style=social)
+[![stat](https://img.shields.io/website?url=https%3A%2F%2Fsujatha-m.github.io%2FWeather-Dashboard%2FDevelop%2F)](https://img.shields.io/website?url=https%3A%2F%2Fsujatha-m.github.io%2FWeather-Dashboard%2FDevelop%2F)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Visuals
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![](Demo/budgetTrackerGif.gif)
+![](Demo/1.image.png)
+![](Demo/2.image.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Built with
+* React.js
+* React-dom
+* React-bootstrap
+* Axios
+* NodeJS
+* Node Packages:
+* Randomuser API
 
-### Code Splitting
+## Installation 
+Run npm install to install all dependencies.
+npm run start or npm start.
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
+The page will reload if you make edits. You will also see any lint errors in the console.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+The Employee Directory app is live on Heroku for you to use as well.
 
-### Analyzing the Bundle Size
+## Usage
+```sh
+     npm start or npm run start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate.
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## License 
+[![MIT](https://img.shields.io/npm/l/isc?color=Blue&style=plastic)](https://img.shields.io/npm/l/isc?color=Blue&style=plastic)
 
-### Advanced Configuration
+## Questions
+# ![My Pic](https://avatars0.githubusercontent.com/u/59231894?v=4)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+jhanavi.bhushan@gmail.com
