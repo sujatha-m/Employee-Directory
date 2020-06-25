@@ -11,12 +11,13 @@ class Container extends Component {
     //search starts as an empty string
     state = {
         search: '',
-        employess:[],
+        employees:[],
         filteredEmployees:[],
         order:'asc'
     }
 
-    // this is the initialization, what do you want the page to display when page it's first loaded
+    // initialization function which extracts the employees directory from randomuser API 
+    // when page is first loaded
     componentDidMount(){
         API.getEmployees().then(res => this.setState({
             employees: res.data.results,
@@ -25,12 +26,12 @@ class Container extends Component {
   
     }
 
-     //API call triggered when page it's refreshed and  when application it's loaded 
+     //API call triggered when page is refreshed and  when application is loaded 
      employeeSearch = () => {
         API.getUsers()
             .then(res => this.setState({
 
-                //change their both states to hold all the data from the API call(all employess) and will be passed down trough props like that
+                //change their both states to hold all the data from the API call(all employees) and will be passed down trough props like that
                 //employee will remain the same and filteredEmployes will be changed and passed down during application's life. Employee will always hold all employess.
                 filteredEmployees: res.data.results,
                 employees: res.data.results
@@ -38,7 +39,7 @@ class Container extends Component {
             .catch(err => console.log(err))
     }
 
-    //when button search it's clicked
+    //function that handles the employees search when search button is clicked
     handleSearch = event => {
         event.preventDefault();
         if (!this.state.search) {
@@ -54,7 +55,7 @@ class Container extends Component {
         });
     }
 
-    //when input is changing it will dynamically show the associates names that match in the screen
+    //when input is changing it will dynamically show the employees names that match in the screen
     handleInputChange = event => {
         const employees = this.state.employees;
         const UserInput = event.target.value;
@@ -62,29 +63,26 @@ class Container extends Component {
         this.setState({
             //change the state of  filteredEmployes now it holds all the employes that matches users
             // search and will be passed down in this state
-            filteredEmployees,
+            filteredEmployees
         });
     };
 
+    //function that sorts the selected firstname value from drop down menu and
+    //sets the filteredEmployees state to sorted array to be displayed
+    //in the table
     sortByFirstName = () => {
         const filtereds = this.state.filteredEmployees
-        //if(this.state.order === "asc"){
-            const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
-            //console.log(sorteds)
+        const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
+        //console.log(sorteds)
 
-            this.setState({
-                filteredEmployees: sorteds
-            })
-         //} else {
-        //     const sorteds = filtereds.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
-        //     //console.log(sorteds)
-
-        //     this.setState({
-        //         filteredEmployees: sorteds
-        //     })
-        // }
+        this.setState({
+            filteredEmployees: sorteds
+        })
     }
 
+    //function that sorts the selected age value from drop down menu and
+    //sets the filteredEmployees state to sorted array to be displayed
+    //in the table
     sortByAge = () => {
         const filtereds = this.state.filteredEmployees
         const sorteds = filtereds.sort((a, b) => (a.dob.age < b.dob.age) ? -1 : 1)
@@ -94,20 +92,34 @@ class Container extends Component {
         })  
     }
 
+    //function that filters the selected gender value from drop down menu and
+    //sets the filteredEmployees state to filtered array to be displayed
+    //in the table
+    filterByGender = (gender) => {
+        console.log(gender.toLowerCase())
+        const filtereds = this.state.filteredEmployees
+        //filters the object looking for the value that matches the value selected
+        //in the dropdown menu
+        const sorteds = filtereds.filter(a => a.gender.toLowerCase() === gender.toLowerCase())
+        this.setState({
+            filteredEmployees: sorteds
+        })
+    }
+
+    /* callback function passed to 'search' child component to
+     * assist dropdown menu filter and sort functionalities
+     */ 
     invokeDropDownCBs = (val) => {
         if(val === 'FirstName') {
             this.sortByFirstName()
         } else if(val === 'Age') {
                 this.sortByAge()
-        } else if(val === 'Male') {
-
-        } else if(val === 'Female') {
-
+        } else if((val === 'Male') || (val === 'Female')) {
+            this.filterByGender(val)
         }
     }
 
     render() {
-
         return (
             <div>
                 <Header/>
