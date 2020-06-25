@@ -4,8 +4,17 @@ import FilterDropDown from '../Filter/index'
 
 import './style.css'
 
+/* component to handle searching of employee names from the employee directory
+  * also holds the child components for sorting and filter dropdown menu of employee
+  * fields
+ */
 function SearchBox (props) {
   const [val,setValue] = useState('');
+
+  /* function to handle dropdown value selected by user
+   * and invoke the callback function in Container component
+   * to handle sorting and filtering of employee fields based on value
+   */
   const handleSelect = (e)=>{
     console.log(e);
     setValue(e)
@@ -40,7 +49,7 @@ function SearchBox (props) {
       <SortDropDown
       handleSelect = {handleSelect}
       val = {val}
-      />
+      />&nbsp;&nbsp;&nbsp;
       <FilterDropDown
       handleSelect = {handleSelect}
       val = {val}
