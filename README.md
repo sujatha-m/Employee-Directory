@@ -3,8 +3,8 @@
 An Employee Directory application built using React components.
 The application manages component states and responds to user events.
 
-### Deployed Heroku URL
-Click here to see live app: 
+### Deployed URL
+Click here to see live app: https://sujatha-m.github.io/react-employee-directory/
 
 ## Table of Contents
    * [User Story](#user-story)
@@ -80,7 +80,7 @@ Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
 The page will reload if you make edits. You will also see any lint errors in the console.
 
-The Employee Directory app is live on Heroku for you to use as well.
+The Employee Directory app is live for you to use as well.
 
 ## Usage
 ```sh
