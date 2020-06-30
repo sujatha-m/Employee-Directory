@@ -97,7 +97,7 @@ class Container extends Component {
     //in the table
     filterByGender = (gender) => {
         console.log(gender.toLowerCase())
-        const filtereds = this.state.filteredEmployees
+        const filtereds =this.state.employees
         //filters the object looking for the value that matches the value selected
         //in the dropdown menu
         const sorteds = filtereds.filter(a => a.gender.toLowerCase() === gender.toLowerCase())
